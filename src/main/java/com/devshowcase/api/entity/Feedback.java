@@ -1,0 +1,12 @@
+package com.devshowcase.api.entity;
+import jakarta.persistence.*;
+@Entity @Table(name="feedbacks")
+public class Feedback {
+ @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id;
+ @Column(nullable=false,length=1000) private String comment;
+ @Column(nullable=false) private Integer rating;
+ @ManyToOne(fetch=FetchType.LAZY,optional=false) @JoinColumn(name="project_id",nullable=false) private Project project;
+ public Feedback(){}
+ public Long getId(){return id;} public String getComment(){return comment;} public void setComment(String v){comment=v;}
+ public Integer getRating(){return rating;} public void setRating(Integer v){rating=v;} public Project getProject(){return project;} public void setProject(Project v){project=v;}
+}
